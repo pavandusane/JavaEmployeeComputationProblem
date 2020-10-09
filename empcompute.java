@@ -6,24 +6,28 @@ public class empcompute {
 		System.out.println("*************************Welcome to Employee Wage Computational Problem************************");
         Random rand = new Random(); 
 		int isPresent=1;
-		int wageperhour=20;
-		int fulldayhour=8;
-		int parttimehour=4;
-		int totalhours=0;
-		int totaldays=0;
-		int dailywage=0;
-		int parttimewage=0;
-		int monthlyfulltimewage=0;
-		int monthlyparttimewage=0;
-      int persontype = rand.nextInt(2); 
-      int noofdays=20;
-      int x=1;
+		int	wageperhour=20;
+		int	fulldayhour=8;
+		int	parttimehour=4;
+		int	totalhours=0;
+		int	totaldays=0;
+		int	dailywage=0;
+		int	parttimewage=0;
+		int	monthlyfulltimewage=0;
+		int	monthlyparttimewage=0;
+        int persontype = rand.nextInt(2); 
+        int noofdays=20;
+        int	x=1;
 		int[] arr=new int[20];
 		int[] arr1=new int[20];
-      System.out.println(persontype);
+        System.out.println(persontype);
 		
-        while (totaldays<30) 
+        while (true) 
         {
+			if (totalhours < 100) 
+			{
+				if (totaldays < 20) 
+				{
 					Random r = new Random();
 					int low = 1;
 					int high = 2;
@@ -57,8 +61,16 @@ public class empcompute {
 					case 2:
 						System.out.println("Employee is absent");
 						totaldays=totaldays+1;						
-					}
+					}							
+				}else {
+					break;
+				}
+        }	else {
+        	break;
         }
+        }
+		System.out.println("Total work hours "+totalhours);
+        System.out.println("Total Days : "+totaldays);
         System.out.println("Monthly fulltime wage : "+monthlyfulltimewage);
         System.out.println("Monthly parttime wage : "+monthlyparttimewage);
 	}
