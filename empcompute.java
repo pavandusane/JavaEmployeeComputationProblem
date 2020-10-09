@@ -20,14 +20,10 @@ public class empcompute {
       int x=1;
 		int[] arr=new int[20];
 		int[] arr1=new int[20];
-        System.out.println(persontype);
+      System.out.println(persontype);
 		
-        while (true) 
+        while (totaldays<30) 
         {
-			if (totalhours < 100) 
-			{
-				if (totaldays < 20) 
-				{
 					Random r = new Random();
 					int low = 1;
 					int high = 2;
@@ -42,12 +38,18 @@ public class empcompute {
 							dailywage=(wageperhour*fulldayhour*randomcheck);
 							System.out.println("DailyWage :"+dailywage);
 							arr[x]=dailywage;
+							monthlyfulltimewage=(monthlyfulltimewage+dailywage);
+							arr1[x]=monthlyfulltimewage;
+							System.out.println("Monthly full time wage : "+monthlyfulltimewage);
 							totalhours=totalhours+8;
 							x=x+1;
 						}else {
 							parttimewage=(wageperhour*parttimehour*randomcheck);
 							System.out.println("ParttimeWage :"+parttimewage);
 							arr[x]=parttimewage;
+							monthlyparttimewage=(monthlyparttimewage+parttimewage);
+							arr1[x]=monthlyparttimewage;
+							System.out.println("Monthly part time wage : "+monthlyparttimewage);
 							totalhours=totalhours+4;
 							x=x+1;
 						}
@@ -55,15 +57,9 @@ public class empcompute {
 					case 2:
 						System.out.println("Employee is absent");
 						totaldays=totaldays+1;						
-					}							
-				}else {
-					break;
-				}
-        }	else {
-        	break;
+					}
         }
-        }
-		System.out.println("Total work hours "+totalhours);
-        System.out.println("Total Days : "+totaldays);
+        System.out.println("Monthly fulltime wage : "+monthlyfulltimewage);
+        System.out.println("Monthly parttime wage : "+monthlyparttimewage);
 	}
 }
