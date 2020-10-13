@@ -1,13 +1,11 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class EmpCompute3 {
 public static final int isPresent=1;
-public static final int wageperhour=20;
-public static final int fulldayhour=8;
-public static final int parttimehour=4;
 public static final int noofdays=20;
 
-	public void CalWage() {
+	public void CalWage(int wageperhour,int fulldayhour,int parttimehour) {
 	        Random rand = new Random(); 
 			int	totalhours=0;
 			int	totaldays=0;
@@ -77,6 +75,20 @@ public static final int noofdays=20;
 	public static void main(String[] args) {
 		System.out.println("*************************Welcome to Employee Wage Computational Problem************************");
 		EmpCompute3 ep = new EmpCompute3();
-		ep.CalWage();
+		EmpCompute3 ep1 = new EmpCompute3();
+		System.out.println("Which Company Employee Wage You Want(DMART[1] or RELIANCE[2]) : ");
+	    Scanner sc = new Scanner(System.in);  // Create a Scanner object
+	    int opt=sc.nextInt();
+	    switch (opt) {
+		case 1:
+			ep.CalWage(20,8,4); //int wageperhour,int fulldayhour,int parttimehour
+			break;
+		case 2:
+			ep.CalWage(10,10,5);
+			break;
+
+		default:
+			break;
+		}
  	}
 }
