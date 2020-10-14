@@ -1,24 +1,20 @@
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-interface EmpComputeWage{
-	public void EmpCompute3(int i,int j,int k);
-	public int[] CalWage();
-}
-
-public class EmpCompute3 implements EmpComputeWage{
+public class EmpCompute3 {
 public static final int isPresent=1;
 public static final int noofdays=20;
 private int wageperhour;
 private int fulldayhour;
 private int parttimehour;
 
-	public void EmpCompute3(int i, int j, int k) {
+	public EmpCompute3(int i, int j, int k) {
 		this.wageperhour=i;
 		this.fulldayhour=j;
 		this.parttimehour=k;
 }
-	public int[] CalWage(){
+	public int[] CalWage() {
 	        Random rand = new Random(); 
 			int	totalhours=0;
 			int	totaldays=0;
@@ -78,31 +74,3 @@ private int parttimehour;
 	        }	else {
 	        	break;
 	        }
-	        }
-	        
-	        int arr3[]=new int[4];
-	        arr3[0]=totalhours;
-	        arr3[1]=totaldays;
-	        arr3[2]=monthlyfulltimewage;
-	        arr3[3]=monthlyparttimewage;
-	        return arr3;
-	}
-	public static void main(String[] args) {
-		System.out.println("*************************Welcome to Employee Wage Computational Problem************************");
-		EmpComputeWage obj1=new EmpCompute3();
-		EmpComputeWage obj2=new EmpCompute3();
-
-		obj1.EmpCompute3(20,8,4);
-		obj2.EmpCompute3(10,10,5);
-		System.out.println("Which Company Employee Wage You Want(DMART[1] or RELIANCE[2]) : ");
-	    Scanner sc = new Scanner(System.in);  // Create a Scanner object
-	    int arr4[]=new int[4];
-	    int opt=sc.nextInt();
-	    switch (opt) {
-		case 1:
-			
-			arr4=obj1.CalWage(); //int wageperhour,int fulldayhour,int parttimehour
-			System.out.println("Total work hours "+arr4[0]);
-	        System.out.println("Total Days : "+arr4[1]);
-	        System.out.println("Monthly fulltime wage : "+arr4[2]);
-	        System.out.println("Monthly parttime wage : "+arr4[3]);
