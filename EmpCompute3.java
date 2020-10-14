@@ -4,8 +4,16 @@ import java.util.Scanner;
 public class EmpCompute3 {
 public static final int isPresent=1;
 public static final int noofdays=20;
+private int wageperhour;
+private int fulldayhour;
+private int parttimehour;
 
-	public void CalWage(int wageperhour,int fulldayhour,int parttimehour) {
+	public EmpCompute3(int i, int j, int k) {
+		this.wageperhour=i;
+		this.fulldayhour=j;
+		this.parttimehour=k;
+}
+	public int[] CalWage() {
 	        Random rand = new Random(); 
 			int	totalhours=0;
 			int	totaldays=0;
@@ -66,25 +74,37 @@ public static final int noofdays=20;
 	        	break;
 	        }
 	        }
-			System.out.println("Total work hours "+totalhours);
-	        System.out.println("Total Days : "+totaldays);
-	        System.out.println("Monthly fulltime wage : "+monthlyfulltimewage);
-	        System.out.println("Monthly parttime wage : "+monthlyparttimewage);
-
+	        
+	        int arr3[]=new int[4];
+	        arr3[0]=totalhours;
+	        arr3[1]=totaldays;
+	        arr3[2]=monthlyfulltimewage;
+	        arr3[3]=monthlyparttimewage;
+	        return arr3;
 	}
 	public static void main(String[] args) {
 		System.out.println("*************************Welcome to Employee Wage Computational Problem************************");
-		EmpCompute3 ep = new EmpCompute3();
-		EmpCompute3 ep1 = new EmpCompute3();
+		EmpCompute3 ep = new EmpCompute3(20,8,4);
+		EmpCompute3 ep1 = new EmpCompute3(10,10,5);
 		System.out.println("Which Company Employee Wage You Want(DMART[1] or RELIANCE[2]) : ");
 	    Scanner sc = new Scanner(System.in);  // Create a Scanner object
+	    int arr4[]=new int[4];
 	    int opt=sc.nextInt();
 	    switch (opt) {
 		case 1:
-			ep.CalWage(20,8,4); //int wageperhour,int fulldayhour,int parttimehour
+			
+			arr4=ep.CalWage(); //int wageperhour,int fulldayhour,int parttimehour
+			System.out.println("Total work hours "+arr4[0]);
+	        System.out.println("Total Days : "+arr4[1]);
+	        System.out.println("Monthly fulltime wage : "+arr4[2]);
+	        System.out.println("Monthly parttime wage : "+arr4[3]);
 			break;
 		case 2:
-			ep.CalWage(10,10,5);
+			arr4=ep1.CalWage(); //int wageperhour,int fulldayhour,int parttimehour
+			System.out.println("Total work hours "+arr4[0]);
+	        System.out.println("Total Days : "+arr4[1]);
+	        System.out.println("Monthly fulltime wage : "+arr4[2]);
+	        System.out.println("Monthly parttime wage : "+arr4[3]);
 			break;
 
 		default:
