@@ -1,101 +1,110 @@
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 public class EmpCompute3 {
 public static final int isPresent=1;
 public static final int noofdays=20;
-private int wageperhour,fulldayhour,parttimehour;
+private int wageperhour;
+private int fulldayhour;
+private int parttimehour;
 
-public EmpCompute3(int i, int j, int k) {
+	public EmpCompute3(int i, int j, int k) {
 		this.wageperhour=i;
 		this.fulldayhour=j;
 		this.parttimehour=k;
 }
-
-public int[] CalWage() {
+	public int[] CalWage() {
 	        Random rand = new Random(); 
-			int	totalhours=0,totaldays=0,dailywage=0,parttimewage=0,monthlyfulltimewage=0,monthlyparttimewage=0,x=1,totalwage,day=1;
+			int	totalhours=0;
+			int	totaldays=0;
+			int	dailywage=0;
+			int	parttimewage=0;
+			int	monthlyfulltimewage=0;
+			int	monthlyparttimewage=0;
 	        int persontype = rand.nextInt(2); 	        
+	        int	x=1;
 			int[] arr=new int[20];
+			int[] arr1=new int[20];
+	        System.out.println(persontype);
+			
 	        while (true) 
 	        {
 				if (totalhours < 100) 
 				{
 					if (totaldays < 20) 
 					{
-						java.util.Random random = new java.util.Random();
-					    int randomcheck = random.nextInt(2) + 1;
-					    
+						Random r = new Random();
+						int low = 1;
+						int high = 2;
+						int randomcheck = r.nextInt(high-low) + low;					
+
 						switch (randomcheck)
 						{
 						case 1:
-							System.out.println("Employee is present on day : "+day);
+							System.out.println("Employee is present");
 							if(persontype==0)
 							{
 								dailywage=(wageperhour*fulldayhour*randomcheck);
-								System.out.println("FulltimeWage for Day :"+day+" is "+dailywage);
+								System.out.println("DailyWage :"+dailywage);
 								arr[x]=dailywage;
 								monthlyfulltimewage=(monthlyfulltimewage+dailywage);
-								arr[x]=monthlyfulltimewage;
+								arr1[x]=monthlyfulltimewage;
 								System.out.println("Monthly full time wage : "+monthlyfulltimewage);
 								totalhours=totalhours+8;
 								x=x+1;
-								day=day+1;
-								totalwage=monthlyfulltimewage;
 							}else {
 								parttimewage=(wageperhour*parttimehour*randomcheck);
-								System.out.println("ParttimeWage for Day :"+day+" is "+parttimewage);
+								System.out.println("ParttimeWage :"+parttimewage);
 								arr[x]=parttimewage;
-								monthlyfulltimewage=(monthlyfulltimewage+parttimewage);
-								arr[x]=monthlyparttimewage;
-								System.out.println("Monthly part time wage : "+monthlyfulltimewage);
+								monthlyparttimewage=(monthlyparttimewage+parttimewage);
+								arr1[x]=monthlyparttimewage;
+								System.out.println("Monthly part time wage : "+monthlyparttimewage);
 								totalhours=totalhours+4;
 								x=x+1;
-								day=day+1;
-								totalwage=monthlyfulltimewage;
-
 							}
 							totaldays=totaldays+1;
 						case 2:
-							System.out.println("Employee is absent on day : "+day);
+							System.out.println("Employee is absent");
 							totaldays=totaldays+1;						
-							day=day+1;
-
-						}
-					}else {break;}
-	        }else {break;}
-	      }	        
-	        arr[0]=totalhours;
-	        arr[1]=totaldays;
-	        arr[2]=monthlyfulltimewage;
-	        return arr;
-	}	
+						}							
+					}else {
+						break;
+					}
+	        }	else {
+	        	break;
+	        }
+	        }
+	        
+	        int arr3[]=new int[4];
+	        arr3[0]=totalhours;
+	        arr3[1]=totaldays;
+	        arr3[2]=monthlyfulltimewage;
+	        arr3[3]=monthlyparttimewage;
+	        return arr3;
+	}
 	public static void main(String[] args) {
 		System.out.println("*************************Welcome to Employee Wage Computational Problem************************");
-		ArrayList<EmpCompute3> EmpWageBuilder1 = new ArrayList<EmpCompute3>(); // Create an ArrayList object
-		EmpWageBuilder1.add(new EmpCompute3(20,8,4));
-		EmpWageBuilder1.add(new EmpCompute3(10,10,5));
+		EmpCompute3 ep = new EmpCompute3(20,8,4);
+		EmpCompute3 ep1 = new EmpCompute3(10,10,5);
 		System.out.println("Which Company Employee Wage You Want(DMART[1] or RELIANCE[2]) : ");
 	    Scanner sc = new Scanner(System.in);  // Create a Scanner object
 	    int arr4[]=new int[4];
 	    int opt=sc.nextInt();
 	    switch (opt) {
 		case 1:
-			System.out.println("********************************DMART***********************************");
-			arr4=EmpWageBuilder1.get(0).CalWage(); //int wageperhour,int fulldayhour,int parttimehour
-
-			System.out.println("Monthly wage : "+arr4[2]);
-	        System.out.println("==================DMART Total Wages=========================");
-	        System.out.println("Total Wage of DMART is : "+arr4[2]);
-			break;
 			
+			arr4=ep.CalWage(); //int wageperhour,int fulldayhour,int parttimehour
+			System.out.println("Total work hours "+arr4[0]);
+	        System.out.println("Total Days : "+arr4[1]);
+	        System.out.println("Monthly fulltime wage : "+arr4[2]);
+	        System.out.println("Monthly parttime wage : "+arr4[3]);
+			break;
 		case 2:
-			System.out.println("********************************Reliance***********************************");
-			arr4=EmpWageBuilder1.get(1).CalWage(); //int wageperhour,int fulldayhour,int parttimehour
-			System.out.println("Monthly wage : "+arr4[2]);
-	        System.out.println("==================Reliance Total Wages=========================");
-	        System.out.println("Total Wage of Reliance is : "+arr4[2]);
+			arr4=ep1.CalWage(); //int wageperhour,int fulldayhour,int parttimehour
+			System.out.println("Total work hours "+arr4[0]);
+	        System.out.println("Total Days : "+arr4[1]);
+	        System.out.println("Monthly fulltime wage : "+arr4[2]);
+	        System.out.println("Monthly parttime wage : "+arr4[3]);
 			break;
 
 		default:
