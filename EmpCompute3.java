@@ -30,7 +30,7 @@ public int[] CalWage() {
 						switch (randomcheck)
 						{
 						case 1:
-							System.out.println("Employee is present");
+							System.out.println("Employee is present on day : "+day);
 							if(persontype==0)
 							{
 								dailywage=(wageperhour*fulldayhour*randomcheck);
@@ -47,19 +47,21 @@ public int[] CalWage() {
 								parttimewage=(wageperhour*parttimehour*randomcheck);
 								System.out.println("ParttimeWage for Day :"+day+" is "+parttimewage);
 								arr[x]=parttimewage;
-								monthlyparttimewage=(monthlyparttimewage+parttimewage);
+								monthlyfulltimewage=(monthlyfulltimewage+parttimewage);
 								arr[x]=monthlyparttimewage;
-								System.out.println("Monthly part time wage : "+monthlyparttimewage);
+								System.out.println("Monthly part time wage : "+monthlyfulltimewage);
 								totalhours=totalhours+4;
 								x=x+1;
 								day=day+1;
-								totalwage=monthlyparttimewage;
+								totalwage=monthlyfulltimewage;
 
 							}
 							totaldays=totaldays+1;
 						case 2:
-							System.out.println("Employee is absent");
+							System.out.println("Employee is absent on day : "+day);
 							totaldays=totaldays+1;						
+							day=day+1;
+
 						}
 					}else {break;}
 	        }else {break;}
@@ -67,7 +69,6 @@ public int[] CalWage() {
 	        arr[0]=totalhours;
 	        arr[1]=totaldays;
 	        arr[2]=monthlyfulltimewage;
-	        arr[3]=monthlyparttimewage;
 	        return arr;
 	}	
 	public static void main(String[] args) {
@@ -81,19 +82,20 @@ public int[] CalWage() {
 	    int opt=sc.nextInt();
 	    switch (opt) {
 		case 1:
+			System.out.println("********************************DMART***********************************");
 			arr4=EmpWageBuilder1.get(0).CalWage(); //int wageperhour,int fulldayhour,int parttimehour
-	        System.out.println("Monthly fulltime wage : "+arr4[2]);
-	        System.out.println("Monthly parttime wage : "+arr4[3]);
-	        System.out.println("===========================================");
-	        System.out.println("Total Wage of DMART is : "+(arr4[2]+arr4[3]));
+
+			System.out.println("Monthly wage : "+arr4[2]);
+	        System.out.println("==================DMART Total Wages=========================");
+	        System.out.println("Total Wage of DMART is : "+arr4[2]);
 			break;
 			
 		case 2:
+			System.out.println("********************************Reliance***********************************");
 			arr4=EmpWageBuilder1.get(1).CalWage(); //int wageperhour,int fulldayhour,int parttimehour
-	        System.out.println("Monthly fulltime wage : "+arr4[2]);
-	        System.out.println("Monthly parttime wage : "+arr4[3]);
-	        System.out.println("===========================================");
-	        System.out.println("Total Wage of Reliance is : "+(arr4[2]+arr4[3]));
+			System.out.println("Monthly wage : "+arr4[2]);
+	        System.out.println("==================Reliance Total Wages=========================");
+	        System.out.println("Total Wage of Reliance is : "+arr4[2]);
 			break;
 
 		default:
