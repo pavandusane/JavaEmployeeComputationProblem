@@ -74,3 +74,44 @@ private int parttimehour;
 	        }	else {
 	        	break;
 	        }
+	        }
+	        
+	        int arr3[]=new int[4];
+	        arr3[0]=totalhours;
+	        arr3[1]=totaldays;
+	        arr3[2]=monthlyfulltimewage;
+	        arr3[3]=monthlyparttimewage;
+	        return arr3;
+	}
+	public static void main(String[] args) {
+		System.out.println("*************************Welcome to Employee Wage Computational Problem************************");
+		ArrayList<EmpCompute3> EmpWageBuilder1 = new ArrayList<EmpCompute3>(); // Create an ArrayList object
+		EmpWageBuilder1.add(new EmpCompute3(20,8,4));
+		EmpWageBuilder1.add(new EmpCompute3(10,10,5));
+		System.out.println("Which Company Employee Wage You Want(DMART[1] or RELIANCE[2]) : ");
+	    Scanner sc = new Scanner(System.in);  // Create a Scanner object
+	    int arr4[]=new int[4];
+	    int opt=sc.nextInt();
+	    switch (opt) {
+		case 1:
+			
+			arr4=EmpWageBuilder1.get(0).CalWage(); //int wageperhour,int fulldayhour,int parttimehour
+			System.out.println("Total work hours "+arr4[0]);
+	        System.out.println("Total Days : "+arr4[1]);
+	        System.out.println("Monthly fulltime wage : "+arr4[2]);
+	        System.out.println("Monthly parttime wage : "+arr4[3]);
+			break;
+		case 2:
+			arr4=EmpWageBuilder1.get(1).CalWage(); //int wageperhour,int fulldayhour,int parttimehour
+			System.out.println("Total work hours "+arr4[0]);
+	        System.out.println("Total Days : "+arr4[1]);
+	        System.out.println("Monthly fulltime wage : "+arr4[2]);
+	        System.out.println("Monthly parttime wage : "+arr4[3]);
+			break;
+
+		default:
+			break;
+		}
+ 	}
+}
+
